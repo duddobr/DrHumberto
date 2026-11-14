@@ -925,39 +925,28 @@
             margin: 14px 0 0;
             font-size: .95rem;
             color: var(--mut);
-        }
-
-        .faq-cta {
-            text-align: center;
-            margin-top: 36px
-        }
-
-        .faq-cta-btn {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: #9A031E;
-            color: #ffffff !important;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .flag-country {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
             font-weight: 600;
-            font-size: 1.05rem;
-            padding: 14px 32px;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(154, 3, 30, .35);
-            text-decoration: none;
-            transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease
+            color: var(--tx)
         }
 
-        .faq-cta-btn:hover {
-            background: #780217;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(120, 2, 23, .45)
-        }
-
-        .faq-cta-sub {
-            margin: 14px 0 0;
-            font-size: .95rem;
-            color: var(--mut);
+        .flag-img {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            vertical-align: middle;
+            border-radius: 50%;
+            object-fit: cover
         }
 
         @media(prefers-reduced-motion:reduce) {
@@ -1308,17 +1297,15 @@
                     class="faq-cta-btn inline-block bg-[#9A031E] text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-[#780217] transition-all">
                     Agendar Sessão Online
                 </a>
-                <p class="faq-cta-sub text-gray-600 text-sm">
-                    📍 Atendimento para todo o 🇧🇷 Brasil e 🇵🇹 Exterior.
+                <p class="faq-cta-sub text-gray-600 text-sm flex items-center gap-2 justify-center">
+                    <span>📍</span> Atendimento para todo o 
+                    <span class="flag-country inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
+                        <img src="imagens/bandeira-brasil.svg" alt="Brasil" class="flag-img w-5 h-auto inline"> Brasil
+                    </span> e 
+                    <span class="flag-country inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
+                        <img src="imagens/bandeira-portugal.svg" alt="Portugal" class="flag-img w-5 h-auto inline"> Exterior
+                    </span>.
                 </p>
-            </div>
-
-            <div class="faq-cta">
-                <a href="https://wa.me/5541920048552?text=Ol%C3%A1%2C%20Dr.%20Humberto!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento."
-                    target="_blank" rel="noopener noreferrer"
-                    class="faq-cta-btn inline-block bg-[#9A031E] text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-[#780217] transition-all">
-                    Agendar Sessão Online
-                </a>
             </div>
         </section>
 
