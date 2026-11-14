@@ -1532,8 +1532,20 @@
             border-color: var(--line);
         }
 
+        @media (max-width: 639px) {
+            p:has(> br.sm\:hidden) {
+                display: block !important;
+                text-align: center;
+                line-height: 1.8;
+            }
+        }
+
         /* Breakpoints responsivos para telas médias e grandes (sm: >= 640px) */
         @media (min-width: 640px) {
+            .sm\:hidden {
+                display: none !important;
+            }
+
             .sm\:flex-row {
                 flex-direction: row;
             }
@@ -1647,7 +1659,7 @@
 
             <!-- Local de Atendimento com Bandeiras Alinhadas -->
             <p class="text-gray-600 text-sm flex items-center justify-center sm:justify-start gap-1.5 flex-wrap mb-8">
-                <span>📍</span> Atendimento para todo o 
+                <span>📍</span> Atendimento para todo o <br class="sm:hidden">
                 <span class="inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
                     <img src="imagens/bandeira-brasil.svg" alt="Brasil" style="width: 20px; height: 14px; display: inline-block; vertical-align: middle;"> Brasil
                 </span> e 
@@ -1922,7 +1934,7 @@
 
             <div class="faq-cta">
                 <p class="text-gray-600 text-sm flex items-center justify-center gap-1.5 flex-wrap">
-                    <span>📍</span> Atendimento para todo o 
+                    <span>📍</span> Atendimento para todo o <br class="sm:hidden">
                     <span class="inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
                         <img src="imagens/bandeira-brasil.svg" alt="Brasil" style="width: 20px; height: 14px; display: inline-block; vertical-align: middle;"> Brasil
                     </span> e 
