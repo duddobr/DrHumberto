@@ -938,6 +938,75 @@
             margin-top: 14px
         }
 
+        .text-gray-600 {
+            color: #4b5563
+        }
+
+        :root[data-theme="dark"] .text-gray-600 {
+            color: var(--mut)
+        }
+
+        .text-sm {
+            font-size: .875rem;
+            line-height: 1.25rem
+        }
+
+        .flex {
+            display: flex
+        }
+
+        .inline-flex {
+            display: inline-flex
+        }
+
+        .items-center {
+            align-items: center
+        }
+
+        .gap-2 {
+            gap: .5rem
+        }
+
+        .gap-1\.5 {
+            gap: .375rem
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap
+        }
+
+        .font-semibold {
+            font-weight: 600
+        }
+
+        .text-\[\#2B2D42\] {
+            color: #2B2D42
+        }
+
+        :root[data-theme="dark"] .text-\[\#2B2D42\] {
+            color: var(--tx)
+        }
+
+        .hero p.flex {
+            justify-content: flex-start;
+            margin-top: 14px;
+            margin-bottom: 22px
+        }
+
+        .faq-cta p.flex {
+            justify-content: center;
+            margin-top: 14px
+        }
+
+        img[alt="Brasil"],
+        img[alt="Portugal"] {
+            width: 20px !important;
+            height: 14px !important;
+            object-fit: contain !important;
+            display: inline-block !important;
+            vertical-align: middle !important
+        }
+
         .flag-country {
             display: inline-flex;
             align-items: center;
@@ -1076,14 +1145,13 @@
                 <span class="tag">Psicanálise online</span>
                 <h1>Terapia para fortalecer o seu emocional e transformar a sua vida.</h1>
                 <p class="lead">Vamos construir, juntos, saídas para aquilo que hoje paralisa a sua vida.</p>
-                <p class="faq-cta-sub text-gray-600 text-sm flex items-center gap-2 justify-center">
-                    <span>📍</span> Atendimento para todo o
-                    <span class="flag-country inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
-                        <img src="imagens/bandeira-brasil.svg" alt="Brasil" class="flag-img w-5 h-auto inline"> Brasil
-                    </span> e
-                    <span class="flag-country inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
-                        <img src="imagens/bandeira-portugal.svg" alt="Portugal" class="flag-img w-5 h-auto inline">
-                        Exterior
+                <p class="text-gray-600 text-sm flex items-center gap-2 flex-wrap">
+                    <span>📍</span> Atendimento para todo o 
+                    <span class="inline-flex items-center gap-1.5 font-semibold text-[#2B2D42]">
+                        <img src="imagens/bandeira-brasil.svg" alt="Brasil" style="width: 20px; height: 14px; object-fit: contain; display: inline-block; vertical-align: middle;"> Brasil
+                    </span> e 
+                    <span class="inline-flex items-center gap-1.5 font-semibold text-[#2B2D42]">
+                        <img src="imagens/bandeira-portugal.svg" alt="Portugal" style="width: 20px; height: 14px; object-fit: contain; display: inline-block; vertical-align: middle;"> Exterior
                     </span>.
                 </p>
                 <a class="btn"
@@ -1321,14 +1389,13 @@
             </div>
 
             <div class="faq-cta">
-                <p class="faq-cta-sub text-gray-600 text-sm flex items-center gap-2 justify-center">
-                    <span>📍</span> Atendimento para todo o
-                    <span class="flag-country inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
-                        <img src="imagens/bandeira-brasil.svg" alt="Brasil" class="flag-img w-5 h-auto inline"> Brasil
-                    </span> e
-                    <span class="flag-country inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
-                        <img src="imagens/bandeira-portugal.svg" alt="Portugal" class="flag-img w-5 h-auto inline">
-                        Exterior
+                <p class="text-gray-600 text-sm flex items-center gap-2 flex-wrap">
+                    <span>📍</span> Atendimento para todo o 
+                    <span class="inline-flex items-center gap-1.5 font-semibold text-[#2B2D42]">
+                        <img src="imagens/bandeira-brasil.svg" alt="Brasil" style="width: 20px; height: 14px; object-fit: contain; display: inline-block; vertical-align: middle;"> Brasil
+                    </span> e 
+                    <span class="inline-flex items-center gap-1.5 font-semibold text-[#2B2D42]">
+                        <img src="imagens/bandeira-portugal.svg" alt="Portugal" style="width: 20px; height: 14px; object-fit: contain; display: inline-block; vertical-align: middle;"> Exterior
                     </span>.
                 </p>
             </div>
