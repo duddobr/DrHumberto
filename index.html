@@ -672,12 +672,38 @@
             margin: 0
         }
 
-        .qrow.in .qph {
+        .qrow.in .qph,
+        #sobre.in .sobre-ph {
             animation: pop 1s cubic-bezier(.2, .8, .2, 1) both, fl 6s ease-in-out 1s infinite, halo 3s ease-out infinite
         }
 
+        .sobre-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 24px
+        }
+
+        .sobre-ph {
+            display: block;
+            flex-shrink: 0;
+            width: 144px;
+            height: 144px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--ac);
+            margin: 0
+        }
+
+        .sobre-row .lead {
+            flex: 1;
+            min-width: 0;
+            margin: 0
+        }
+
         @media(max-width:640px) {
-            .qrow {
+            .qrow,
+            .sobre-row {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 22px
@@ -815,9 +841,12 @@
         <section id="sobre">
             <span class="tag">Quem sou</span>
             <h2>Dr. Humberto Costa | Psicanalista</h2>
-            <p class="lead">Acredito na terapia como um espaço de escuta profundamente humana, empática e ética. Apoiado
-                em experiência e ampla formação acadêmica, acompanho você na compreensão de conflitos e repetições que
-                paralisam, abrindo caminho para escolhas mais livres e conscientes.</p>
+            <div class="sobre-row">
+                <img class="sobre-ph" src="images/dr-humberto-perfil.jpg" alt="Dr. Humberto Costa, psicanalista">
+                <p class="lead">Acredito na terapia como um espaço de escuta profundamente humana, empática e ética. Apoiado
+                    em experiência e ampla formação acadêmica, acompanho você na compreensão de conflitos e repetições que
+                    paralisam, abrindo caminho para escolhas mais livres e conscientes.</p>
+            </div>
         </section>
 
         <section id="atendimento">
