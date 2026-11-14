@@ -1127,6 +1127,113 @@
                 transform: none !important
             }
         }
+
+        /* Seção Trajetória Acadêmica */
+        #trajetoria {
+            padding: 60px 0;
+            border-top: 1px solid var(--line)
+        }
+
+        #trajetoria.bg-white {
+            background: transparent
+        }
+
+        #trajetoria .max-w-4xl {
+            max-width: 960px;
+            margin: 0 auto
+        }
+
+        #trajetoria h2 {
+            font-family: Fraunces, Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--tx);
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 8px
+        }
+
+        #trajetoria details {
+            margin-bottom: 16px;
+            background: var(--bg2);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 16px 20px;
+            transition: all .25s ease
+        }
+
+        #trajetoria details[open] {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .05)
+        }
+
+        :root[data-theme="dark"] #trajetoria details[open] {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .3)
+        }
+
+        #trajetoria summary {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--tx);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            user-select: none;
+            transition: color .2s ease
+        }
+
+        #trajetoria summary::-webkit-details-marker {
+            display: none
+        }
+
+        #trajetoria summary:hover {
+            color: #9A031E
+        }
+
+        :root[data-theme="dark"] #trajetoria summary:hover {
+            color: var(--ac)
+        }
+
+        #trajetoria summary span.transform {
+            display: inline-block;
+            font-size: .8rem;
+            color: #9A031E;
+            transition: transform .25s ease
+        }
+
+        :root[data-theme="dark"] #trajetoria summary span.transform {
+            color: var(--ac)
+        }
+
+        #trajetoria details[open] summary span.transform {
+            transform: rotate(90deg)
+        }
+
+        #trajetoria .space-y-3 > div + div {
+            margin-top: 14px
+        }
+
+        #trajetoria .border-l-2 {
+            border-left: 3px solid #9A031E;
+            padding-left: 14px
+        }
+
+        #trajetoria .border-l-2 p {
+            margin: 0;
+            line-height: 1.5
+        }
+
+        #trajetoria .border-l-2 p:first-child {
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--tx)
+        }
+
+        #trajetoria .border-l-2 p:last-child {
+            font-size: .84rem;
+            color: var(--mut);
+            margin-top: 3px
+        }
     </style>
 </head>
 
@@ -1134,7 +1241,7 @@
     <div class="w">
         <header><span class="logo">Dr. Humberto Costa</span>
             <nav><a class="pill" href="#sobre"><span class="dot"></span>Quem sou</a><a class="pill"
-                    href="#atendimento"><span class="dot"></span>Atendimento</a><a class="pill" href="#formacao"><span
+                    href="#atendimento"><span class="dot"></span>Atendimento</a><a class="pill" href="#trajetoria"><span
                         class="dot"></span>Trajetória Acadêmica</a><a class="pill" href="#faq"><span
                         class="dot"></span>Dúvidas</a><a class="pill" href="#contato"><span class="dot"></span>Fale
                     comigo</a></nav>
@@ -1203,87 +1310,119 @@
                 conselhos, eu te ofereço uma escuta atenciosa para a sua história.”</p>
         </section>
 
-        <section id="formacao">
-            <span class="tag">Trajetória Acadêmica</span>
-            <div class="ac">
-                <h3>Pós-Doutorado</h3>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Pós-Doutorado em Educação | Educação Estética e Afetividade Humana</b><span>Universidade
-                            Federal do Paraná (UFPR), Brasil · Bolsista CAPES</span></div>
-                </div>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Pós-Doutorado em Design | Estética e Afetividade Humana</b><span>Universidade do Porto
-                            (U.PORTO), Portugal · Bolsista CNPq</span></div>
-                </div>
+        <section id="trajetoria" class="py-16 bg-white"><a id="formacao"></a>
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-2xl font-serif text-[#2B2D42] mb-8 border-b pb-2">Trajetória Acadêmica</h2>
 
-                <h3>Doutorado</h3>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Doutorado em Educação | Educação Estética e Afetividade Humana</b><span>Universidade Federal
-                            do Paraná (UFPR), Brasil</span></div>
-                </div>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Doutorado em Design | Estética e Afetividade Humana</b><span>Universidade Federal do Paraná
-                            (UFPR), Brasil</span></div>
-                </div>
-
-                <h3>Mestrado</h3>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Mestrado em Filosofia | Educação Estética</b><span>Pontifícia Universidade Católica do
-                            Paraná (PUCPR), Brasil</span></div>
-                </div>
-
-                <h3>Especialização</h3>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Psicanálise</b><span>Centro Universitário Internacional (UNINTER), Brasil</span></div>
-                </div>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Design Instrucional para EAD</b><span>Universidade do Oeste Paulista (UNOESTE),
-                            Brasil</span></div>
-                </div>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Leitura de Múltiplas Linguagens</b><span>Pontifícia Universidade Católica do Paraná (PUCPR),
-                            Brasil</span></div>
-                </div>
-
-                <h3>Aperfeiçoamento</h3>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Formação Permanente em Psicanálise</b><span>Escola de Psicanálise de Curitiba (EPC),
-                            Brasil</span></div>
-                </div>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Metodologias, Práticas Pedagógicas e Tecnologias Educacionais</b><span>Escola de Formação
-                            Permanente do Magistério (ESFAPEM), Brasil</span></div>
-                </div>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Tecnologias Digitais na Educação</b><span>Universidade Federal do Ceará (UFC), Brasil</span>
+                <!-- PÓS-DOUTORADO -->
+                <details class="mb-4 group bg-gray-50 rounded-lg p-4 shadow-sm">
+                    <summary class="font-semibold text-[#2B2D42] cursor-pointer flex items-center gap-2 text-lg">
+                        <span class="transform group-open:rotate-90 transition-transform">▼</span> PÓS-DOUTORADO
+                    </summary>
+                    <div class="mt-4 pl-6 space-y-3 text-gray-700">
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Pós-Doutorado em Educação | Educação Estética e Afetividade Humana</p>
+                            <p class="text-xs text-gray-600">Universidade Federal do Paraná (UFPR), Brasil · Bolsista CAPES</p>
+                        </div>
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Pós-Doutorado em Design | Estética e Afetividade Humana</p>
+                            <p class="text-xs text-gray-600">Universidade do Porto (U.PORTO), Portugal · Bolsista CNPq</p>
+                        </div>
                     </div>
-                </div>
+                </details>
 
-                <h3>Graduação</h3>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Licenciatura em Pedagogia (em andamento)</b><span>Centro Universitário ETEP, Brasil</span>
+                <!-- DOUTORADO -->
+                <details class="mb-4 group bg-gray-50 rounded-lg p-4 shadow-sm">
+                    <summary class="font-semibold text-[#2B2D42] cursor-pointer flex items-center gap-2 text-lg">
+                        <span class="transform group-open:rotate-90 transition-transform">▼</span> DOUTORADO
+                    </summary>
+                    <div class="mt-4 pl-6 space-y-3 text-gray-700">
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Doutorado em Educação | Educação Estética e Afetividade Humana</p>
+                            <p class="text-xs text-gray-600">Universidade Federal do Paraná (UFPR), Brasil</p>
+                        </div>
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Doutorado em Design | Estética e Afetividade Humana</p>
+                            <p class="text-xs text-gray-600">Universidade Federal do Paraná (UFPR), Brasil</p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Licenciatura em Artes Visuais</b><span>Centro Universitário ETEP, Brasil</span></div>
-                </div>
-                <div class="row">
-                    <div class="y">•</div>
-                    <div><b>Design de Produto</b><span>Universidade Tuiuti do Paraná (UTP), Brasil</span></div>
-                </div>
+                </details>
+
+                <!-- MESTRADO -->
+                <details class="mb-4 group bg-gray-50 rounded-lg p-4 shadow-sm">
+                    <summary class="font-semibold text-[#2B2D42] cursor-pointer flex items-center gap-2 text-lg">
+                        <span class="transform group-open:rotate-90 transition-transform">▼</span> MESTRADO
+                    </summary>
+                    <div class="mt-4 pl-6 space-y-3 text-gray-700">
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Mestrado em Filosofia | Educação Estética</p>
+                            <p class="text-xs text-gray-600">Pontifícia Universidade Católica do Paraná (PUCPR), Brasil</p>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- ESPECIALIZAÇÃO -->
+                <details class="mb-4 group bg-gray-50 rounded-lg p-4 shadow-sm">
+                    <summary class="font-semibold text-[#2B2D42] cursor-pointer flex items-center gap-2 text-lg">
+                        <span class="transform group-open:rotate-90 transition-transform">▼</span> ESPECIALIZAÇÃO
+                    </summary>
+                    <div class="mt-4 pl-6 space-y-3 text-gray-700">
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Psicanálise</p>
+                            <p class="text-xs text-gray-600">Centro Universitário Internacional (UNINTER), Brasil</p>
+                        </div>
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Design Instrucional para EAD</p>
+                            <p class="text-xs text-gray-600">Universidade do Oeste Paulista (UNOESTE), Brasil</p>
+                        </div>
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Leitura de Múltiplas Linguagens</p>
+                            <p class="text-xs text-gray-600">Pontifícia Universidade Católica do Paraná (PUCPR), Brasil</p>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- APERFEIÇOAMENTO -->
+                <details class="mb-4 group bg-gray-50 rounded-lg p-4 shadow-sm">
+                    <summary class="font-semibold text-[#2B2D42] cursor-pointer flex items-center gap-2 text-lg">
+                        <span class="transform group-open:rotate-90 transition-transform">▼</span> APERFEIÇOAMENTO
+                    </summary>
+                    <div class="mt-4 pl-6 space-y-3 text-gray-700">
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Formação Permanente em Psicanálise</p>
+                            <p class="text-xs text-gray-600">Escola de Psicanálise de Curitiba (EPC), Brasil</p>
+                        </div>
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Metodologias, Práticas Pedagógicas e Tecnologias Educacionais</p>
+                            <p class="text-xs text-gray-600">Escola de Formação Permanente do Magistério (ESFAPEM), Brasil</p>
+                        </div>
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Tecnologias Digitais na Educação</p>
+                            <p class="text-xs text-gray-600">Universidade Federal do Ceará (UFC), Brasil</p>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- GRADUAÇÃO -->
+                <details class="mb-4 group bg-gray-50 rounded-lg p-4 shadow-sm">
+                    <summary class="font-semibold text-[#2B2D42] cursor-pointer flex items-center gap-2 text-lg">
+                        <span class="transform group-open:rotate-90 transition-transform">▼</span> GRADUAÇÃO
+                    </summary>
+                    <div class="mt-4 pl-6 space-y-3 text-gray-700">
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Licenciatura em Pedagogia (em andamento)</p>
+                            <p class="text-xs text-gray-600">Centro Universitário ETEP, Brasil</p>
+                        </div>
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Licenciatura em Artes Visuais</p>
+                            <p class="text-xs text-gray-600">Centro Universitário ETEP, Brasil</p>
+                        </div>
+                        <div class="border-l-2 border-[#9A031E] pl-4">
+                            <p class="font-semibold text-sm text-[#2B2D42]">Design de Produto</p>
+                            <p class="text-xs text-gray-600">Universidade Tuiuti do Paraná (UTP), Brasil</p>
+                        </div>
+                    </div>
+                </details>
             </div>
         </section>
 
