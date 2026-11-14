@@ -103,6 +103,68 @@
         "Psicanálise Online",
         "Afetividade Humana"
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://duddobr.github.io/DrHumberto/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "1) O atendimento online é seguro e sigiloso?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, utilizo o Meet ou ligação por vídeo no WhatsApp e todas as sessões seguem rigorosamente o código de ética profissional e o sigilo analítico."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "2) Como faço para agendar a primeira sessão?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Você pode clicar em qualquer botão de contato para Chamar no WhatsApp ou Enviar um E-mail. Combinaremos o melhor horário para o seu atendimento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "3) Qual é a duração de cada sessão?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As sessões individuais possuem duração de 50 minutos, alinhada à prática clínica psicanalítica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "4) Quais os horários de atendimento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Atendo de segunda a sexta-feira, das 08:00 às 11:00h e das 14:00 às 21:00 horas. Se precisar de horário aos finais de semana, podemos ajustar (custo à parte)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "5) Moro fora do Brasil. Posso fazer análise com você?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O Atendimento online acolhe brasileiros e falantes de português residentes em qualquer lugar do mundo, adaptando-se aos fusos horários."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "6) Qual é o valor do atendimento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Os valores variam de acordo com o formato escolhido para o acompanhamento. Disponibilizo sessões avulsas, bem como pacotes estruturados com 3, 5 ou 10 sessões. Para conhecer os valores e definir o formato ideal para o seu momento, entre em contato diretamente pelo WhatsApp."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "7) Moro fora do Brasil, como posso fazer o pagamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sem problemas! Para quem está fora do Brasil e não possui contas em reais, o pagamento pode ser feito de forma simples e segura através das seguintes alternativas internacionais: Plataformas de Pagamento Globais (PayPal): permite o uso de cartões de crédito ou saldo internacional convertidos automaticamente para a sua moeda local; Contas Internacionais e Globais (Nomad, C6 Global): se você possui saldo em dólar, euro ou outra moeda nessas plataformas, podemos ajustar a modalidade de envio internacional compatível com a sua conta."
+          }
+        }
+      ]
     }
   ]
 }
@@ -719,6 +781,126 @@
             max-width: 100%
         }
 
+        /* FAQ / Dúvidas Frequentes */
+        #faq {
+            padding: 60px 0;
+            border-top: 1px solid var(--line)
+        }
+
+        .faq-list {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px
+        }
+
+        .faq-item {
+            background: var(--bg2);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 18px 22px;
+            transition: border-color .25s ease, background .25s ease, box-shadow .25s ease;
+            position: relative;
+            overflow: hidden
+        }
+
+        .faq-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--ac);
+            opacity: 0;
+            transition: opacity .3s ease
+        }
+
+        .faq-item[open] {
+            border-color: var(--ac);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .18)
+        }
+
+        .faq-item[open]::before {
+            opacity: 1
+        }
+
+        .faq-summary {
+            font-size: 1.06rem;
+            font-weight: 600;
+            color: var(--tx);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            user-select: none;
+            transition: color .2s ease
+        }
+
+        .faq-summary::-webkit-details-marker {
+            display: none
+        }
+
+        .faq-summary:hover {
+            color: var(--ac)
+        }
+
+        .faq-icon {
+            display: inline-block;
+            color: var(--ac);
+            font-size: .82rem;
+            flex-shrink: 0;
+            transition: transform .3s cubic-bezier(.4, 0, .2, 1)
+        }
+
+        .faq-item[open] .faq-icon {
+            transform: rotate(180deg)
+        }
+
+        .faq-body {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--line);
+            color: var(--mut);
+            font-size: 1.02rem;
+            line-height: 1.7
+        }
+
+        .faq-body p {
+            margin: 0 0 10px;
+            color: var(--mut);
+            font-size: 1.02rem;
+            line-height: 1.7
+        }
+
+        .faq-body p:last-child {
+            margin-bottom: 0
+        }
+
+        .faq-body ul {
+            margin: 10px 0 0 0;
+            padding-left: 22px;
+            color: var(--mut)
+        }
+
+        .faq-body li {
+            margin-bottom: 8px;
+            line-height: 1.6
+        }
+
+        .faq-body strong {
+            color: var(--tx)
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            .faq-item,
+            .faq-icon {
+                transition: none !important
+            }
+        }
+
         .cta {
             text-align: center
         }
@@ -821,7 +1003,8 @@
         <header><span class="logo">Dr. Humberto Costa</span>
             <nav><a class="pill" href="#sobre"><span class="dot"></span>Quem sou</a><a class="pill"
                     href="#atendimento"><span class="dot"></span>Atendimento</a><a class="pill" href="#formacao"><span
-                        class="dot"></span>Trajetória Acadêmica</a><a class="pill" href="#contato"><span
+                        class="dot"></span>Trajetória Acadêmica</a><a class="pill" href="#faq"><span
+                        class="dot"></span>Dúvidas</a><a class="pill" href="#contato"><span
                         class="dot"></span>Fale comigo</a></nav>
         </header>
 
@@ -959,6 +1142,97 @@
                     <div class="y">•</div>
                     <div><b>Design de Produto</b><span>Universidade Tuiuti do Paraná (UTP), Brasil</span></div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Seção FAQ / Dúvidas Frequentes -->
+        <section id="faq">
+            <span class="tag">FAQ</span>
+            <h2>Dúvidas Frequentes</h2>
+            <p class="lead">Tudo o que você precisa saber antes de iniciar o seu processo terapêutico.</p>
+
+            <div class="faq-list">
+                <!-- Pergunta 1 -->
+                <details class="faq-item group">
+                    <summary class="faq-summary">
+                        <span>1) O atendimento online é seguro e sigiloso?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-body">
+                        <p>Sim, utilizo o Meet ou ligação por vídeo no WhatsApp e todas as sessões seguem rigorosamente o código de ética profissional e o sigilo analítico.</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 2 -->
+                <details class="faq-item group">
+                    <summary class="faq-summary">
+                        <span>2) Como faço para agendar a primeira sessão?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-body">
+                        <p>Você pode clicar em qualquer botão de contato para Chamar no WhatsApp ou Enviar um E-mail. Combinaremos o melhor horário para o seu atendimento.</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 3 -->
+                <details class="faq-item group">
+                    <summary class="faq-summary">
+                        <span>3) Qual é a duração de cada sessão?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-body">
+                        <p>As sessões individuais possuem duração de 50 minutos, alinhada à prática clínica psicanalítica.</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 4 -->
+                <details class="faq-item group">
+                    <summary class="faq-summary">
+                        <span>4) Quais os horários de atendimento?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-body">
+                        <p>Atendo de segunda a sexta-feira, das 08:00 às 11:00h e das 14:00 às 21:00 horas.<br>
+                            Se precisar de horário aos finais de semana, podemos ajustar (custo à parte).</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 5 -->
+                <details class="faq-item group">
+                    <summary class="faq-summary">
+                        <span>5) Moro fora do Brasil. Posso fazer análise com você?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-body">
+                        <p>Sim. O Atendimento online acolhe brasileiros e falantes de português residentes em qualquer lugar do mundo, adaptando-se aos fusos horários.</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 6 -->
+                <details class="faq-item group">
+                    <summary class="faq-summary">
+                        <span>6) Qual é o valor do atendimento?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-body">
+                        <p>Os valores variam de acordo com o formato escolhido para o acompanhamento. Disponibilizo sessões avulsas, bem como pacotes estruturados com 3, 5 ou 10 sessões. Para conhecer os valores e definir o formato ideal para o seu momento, entre em contato diretamente pelo WhatsApp.</p>
+                    </div>
+                </details>
+
+                <!-- Pergunta 7 -->
+                <details class="faq-item group">
+                    <summary class="faq-summary">
+                        <span>7) Moro fora do Brasil, como posso fazer o pagamento?</span>
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <div class="faq-body">
+                        <p>Sem problemas! Para quem está fora do Brasil e não possui contas em reais, o pagamento pode ser feito de forma simples e segura através das seguintes alternativas internacionais:</p>
+                        <ul>
+                            <li><strong>Plataformas de Pagamento Globais (PayPal):</strong> permite o uso de cartões de crédito ou saldo internacional convertidos automaticamente para a sua moeda local.</li>
+                            <li><strong>Contas Internacionais e Globais (Nomad, C6 Global):</strong> se você possui saldo em dólar, euro ou outra moeda nessas plataformas, podemos ajustar a modalidade de envio internacional compatível com a sua conta.</li>
+                        </ul>
+                    </div>
+                </details>
             </div>
         </section>
 
