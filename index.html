@@ -521,10 +521,6 @@
             animation-delay: .36s
         }
 
-        .photo {
-            animation: fl 6s ease-in-out infinite
-        }
-
         .tag {
             font-size: 1.12rem
         }
@@ -866,11 +862,34 @@
         }
 
         /* =========================================================
+           CENTRALIZAÇÃO NA SEÇÃO "QUEM SOU" APENAS NO MOBILE
+           ========================================================= */
+        @media (max-width: 767px) {
+
+            #sobre .tag,
+            #sobre h2 {
+                display: block;
+                text-align: center !important;
+            }
+
+            #sobre .sobre-ph,
+            #sobre .phw,
+            #sobre img {
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                float: none !important;
+            }
+        }
+
+        /* =========================================================
            ANIMAÇÃO NAS 3 FOTOS PARA A VERSÃO MOBILE (E DESKTOP)
            ========================================================= */
         .photo,
         .sobre-ph,
         .qph {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
             transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease, box-shadow 0.4s ease !important;
             will-change: transform, opacity;
         }
@@ -909,18 +928,11 @@
             .photo:active,
             .sobre-ph:active,
             .qph:active,
-            .phw:active .photo {
-                transform: scale(1.04) !important;
-            }
-        }
-
-        /* Efeito ao tocar (mobile) ou passar o mouse (desktop) */
-        @media (max-width: 767px) {
-
-            .photo:active,
-            .sobre-ph:active,
-            .qph:active,
-            .phw:active .photo {
+            .photo:hover,
+            .sobre-ph:hover,
+            .qph:hover,
+            .phw:active .photo,
+            .phw:hover .photo {
                 transform: scale(1.04) !important;
             }
         }
@@ -2059,8 +2071,8 @@
     <section class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-6 text-center sm:bg-transparent sm:border-0 sm:shadow-none sm:p-0">
             <!-- Foto de Perfil Centralizada -->
-            <div class="flex justify-center mb-6">
-                <img class="qph rv in" src="images/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa">
+            <div class="flex justify-center mb-6 rv">
+                <img class="qph" src="images/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa">
             </div>
 
             <!-- Citação -->
@@ -2359,7 +2371,7 @@
     </a>
     <script>
         (function () {
-            var els = document.querySelectorAll('section:not(.py-12),.card');
+            var els = document.querySelectorAll('section:not(.py-12),.card,.rv');
             if (!('IntersectionObserver' in window)) return;
             var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { threshold: .15 });
             els.forEach(function (el, i) { el.classList.add('rv'); if (el.classList.contains('card')) el.style.transitionDelay = ((i % 3) * 0.12) + 's'; io.observe(el) });
