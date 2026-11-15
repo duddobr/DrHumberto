@@ -243,12 +243,38 @@
             }
         }
 
+        header {
+            background-color: #1F2D2B !important;
+            border-bottom: 1px solid rgba(248, 247, 244, 0.15) !important;
+        }
+
         header a {
             text-decoration: none
         }
 
+        header .brand-title {
+            color: #F8F7F4 !important;
+        }
+
         nav a {
             text-decoration: none
+        }
+
+        nav .nav-pill {
+            background-color: transparent !important;
+            color: #F8F7F4 !important;
+            border: 1px solid rgba(248, 247, 244, 0.35) !important;
+            box-shadow: none !important;
+            transition: all 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        nav .nav-pill:hover,
+        nav .nav-pill:active {
+            background-color: rgba(245, 166, 35, 0.15) !important;
+            border-color: rgba(245, 166, 35, 0.7) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 8px rgba(245, 166, 35, 0.25) !important;
         }
 
         .hero {
@@ -1998,10 +2024,10 @@
 
 <body>
     <!-- Header Fixo / Sticky com Navegação com Rolagem Horizontal no Mobile -->
-    <header class="bg-[#F8F7F4] border-b border-gray-200 sticky top-0 z-50">
+    <header class="bg-[#1F2D2B] border-b border-[rgba(248,247,244,0.15)] sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <!-- Nome/Marca no Topo -->
-            <a href="#" class="font-serif text-lg font-semibold text-[#2B2D42] text-center sm:text-left">
+            <a href="#" class="brand-title font-serif text-lg font-semibold text-[#F8F7F4] text-center sm:text-left">
                 Dr. Humberto Costa
             </a>
 
@@ -2009,17 +2035,17 @@
             <nav class="w-full sm:w-auto overflow-x-auto no-scrollbar py-1">
                 <div class="flex items-center gap-2 whitespace-nowrap justify-start sm:justify-end">
                     <a href="#sobre"
-                        class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Quem
+                        class="nav-pill text-xs px-3 py-1.5 rounded-full transition">Quem
                         sou</a>
                     <a href="#atendimento"
-                        class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Atendimento</a>
+                        class="nav-pill text-xs px-3 py-1.5 rounded-full transition">Atendimento</a>
                     <a href="#trajetoria"
-                        class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Trajetória
+                        class="nav-pill text-xs px-3 py-1.5 rounded-full transition">Trajetória
                         acadêmica</a>
                     <a href="#faq"
-                        class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Dúvidas</a>
+                        class="nav-pill text-xs px-3 py-1.5 rounded-full transition">Dúvidas</a>
                     <a href="#contato"
-                        class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Fale
+                        class="nav-pill text-xs px-3 py-1.5 rounded-full transition">Fale
                         comigo</a>
                 </div>
             </nav>
@@ -2080,18 +2106,20 @@
                 <img class="qph sobre-ph rv foto-animada" src="images/dr-humberto-quemsou.jpg"
                     alt="Dr. Humberto Costa, psicanalista">
                 <p class="lead"><strong>Acredito na terapia como um espaço de escuta profundamente
-                        humana, empática e ética.</strong><br><span class="desktop-only"> A
-                        psicanálise sempre guiou minhas pesquisas, da graduação ao pós-doutorado, na busca por
-                        <strong><em>compreender o funcionamento da mente humana</em></strong>.<span
-                            class="lead-gap" style="display: block; margin-top: 0.5em;">Unindo experiência
-                            clínica e sólida formação acadêmica, acompanho você na elaboração dos conflitos e repetições que
-                            te paralisam, abrindo caminho para você fazer escolhas livres e conscientes.</span></span><span
-                        class="mobile-only"> A psicanálise sempre guiou minhas pesquisas, da graduação ao pós-doutorado,
-                        na busca por <strong><em>compreender o funcionamento da mente humana</em></strong>.<span
-                            class="lead-gap" style="display: block; margin-top: 0.5em;">Unindo
-                            experiência clínica e sólida formação acadêmica, acompanho você na elaboração dos conflitos e
-                            repetições que te paralisam, abrindo caminho para você fazer escolhas livres e
-                            conscientes.</span></span></p>
+                        humana, empática e ética.</strong><span class="desktop-only"><span
+                            class="lead-gap" style="display: block; margin-top: 0.5em;">A
+                            psicanálise sempre guiou minhas pesquisas, da graduação ao pós-doutorado, na busca por
+                            <strong><em>compreender o funcionamento da mente humana</em></strong>.<span
+                                class="lead-gap" style="display: block; margin-top: 0.5em;">Unindo experiência
+                                clínica e sólida formação acadêmica, acompanho você na elaboração dos conflitos e repetições que
+                                te paralisam, abrindo caminho para você fazer escolhas livres e conscientes.</span></span></span><span
+                        class="mobile-only"><span
+                            class="lead-gap" style="display: block; margin-top: 0.5em;">A psicanálise sempre guiou minhas pesquisas, da graduação ao pós-doutorado,
+                            na busca por <strong><em>compreender o funcionamento da mente humana</em></strong>.<span
+                                class="lead-gap" style="display: block; margin-top: 0.5em;">Unindo
+                                experiência clínica e sólida formação acadêmica, acompanho você na elaboração dos conflitos e
+                                repetições que te paralisam, abrindo caminho para você fazer escolhas livres e
+                                conscientes.</span></span></span></p>
             </div>
         </section>
 
