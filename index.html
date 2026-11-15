@@ -893,43 +893,38 @@
         }
 
         /* =========================================================
-           ANIMAÇÃO DEDICADA (.foto-animada) - DESKTOP E MOBILE
+           ANIMAÇÃO DE ENTRADA NA ROLAGEM NAS 3 FOTOS DE RETRATO
+           (A mesma animação que funciona na seção #sobre)
            ========================================================= */
-        @keyframes fotoFlutuarContinuo {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-5px) scale(1.015);
-            }
-        }
-
-        .foto-animada {
+        .foto-animada,
+        img.foto-animada {
             opacity: 0;
-            transform: translateY(24px) scale(0.94);
-            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                        box-shadow 0.4s ease;
+            transform: translateY(28px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
             will-change: opacity, transform;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
         }
 
-        .foto-animada.visivel {
+        .foto-animada.in,
+        .foto-animada.visivel,
+        img.foto-animada.in,
+        img.foto-animada.visivel,
+        .rv.in .foto-animada {
             opacity: 1 !important;
-            transform: translateY(0) scale(1);
-            animation: fotoFlutuarContinuo 4s ease-in-out infinite 0.8s;
+            transform: none !important;
         }
 
+        /* Efeito sutil ao passar o mouse ou tocar (sem interferir na entrada) */
         .foto-animada:hover,
         .foto-animada:active {
-            transform: translateY(-6px) scale(1.05) !important;
-            box-shadow: 0 12px 28px rgba(166, 110, 12, 0.25) !important;
-            animation-play-state: paused;
+            transform: scale(1.03) !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         @media (prefers-reduced-motion: reduce) {
             .foto-animada,
+            .foto-animada.in,
             .foto-animada.visivel {
                 animation: none !important;
                 transition: none !important;
@@ -2030,7 +2025,7 @@
 
             <!-- Foto de Perfil Redonda -->
             <div class="phw hero-photo rv">
-                <img class="sobre-ph foto-animada" src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista">
+                <img class="sobre-ph rv foto-animada" src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista">
             </div>
         </div>
     </section>
@@ -2041,7 +2036,7 @@
             <span class="tag">Quem sou</span>
             <h2>Dr. Humberto Costa | Psicanalista</h2>
             <div class="sobre-row">
-                <img class="qph sobre-ph rv in foto-animada" src="images/dr-humberto-quemsou.jpg"
+                <img class="qph sobre-ph rv foto-animada" src="images/dr-humberto-quemsou.jpg"
                     alt="Dr. Humberto Costa, psicanalista">
                 <p class="lead"><strong class="desktop-bold">Acredito na terapia como um espaço de escuta profundamente
                         humana, empática e ética.</strong><br class="desktop-only"> A psicanálise sempre esteve no
@@ -2078,7 +2073,7 @@
         <div class="max-w-4xl mx-auto px-6 text-center sm:bg-transparent sm:border-0 sm:shadow-none sm:p-0">
             <!-- Foto de Perfil Centralizada -->
             <div class="rv">
-                <img class="sobre-ph foto-animada" src="imagens/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa">
+                <img class="sobre-ph rv foto-animada" src="imagens/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa">
             </div>
 
             <!-- Citação -->
@@ -2377,40 +2372,25 @@
     </a>
     <script>
         (function () {
-            var els = document.querySelectorAll('section:not(.py-12),.card,.rv');
-            if (!('IntersectionObserver' in window)) return;
-            var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { threshold: .15 });
-            els.forEach(function (el, i) { el.classList.add('rv'); if (el.classList.contains('card')) el.style.transitionDelay = ((i % 3) * 0.12) + 's'; io.observe(el) });
-        })();
-
-        // IntersectionObserver dedicado para .foto-animada (Desktop e Mobile)
-        (function () {
-            function initFotoAnimada() {
-                var fotos = document.querySelectorAll('.foto-animada');
-                if (!fotos.length) return;
-                if (!('IntersectionObserver' in window)) {
-                    fotos.forEach(function (f) { f.classList.add('visivel'); });
-                    return;
-                }
-                var observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visivel');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.15 });
-
-                fotos.forEach(function (foto) {
-                    observer.observe(foto);
+            var els = document.querySelectorAll('section:not(.py-12),.card,.rv,.foto-animada');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('in'); el.classList.add('visivel'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (es) {
+                es.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        e.target.classList.add('visivel');
+                        io.unobserve(e.target);
+                    }
                 });
-            }
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initFotoAnimada);
-            } else {
-                initFotoAnimada();
-            }
+            }, { threshold: .15 });
+            els.forEach(function (el, i) {
+                el.classList.add('rv');
+                if (el.classList.contains('card')) el.style.transitionDelay = ((i % 3) * 0.12) + 's';
+                io.observe(el);
+            });
         })();
     </script>
 </body>
