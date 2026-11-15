@@ -277,6 +277,30 @@
             box-shadow: 0 0 8px rgba(245, 166, 35, 0.25) !important;
         }
 
+        @media (max-width: 767px) {
+            header nav {
+                display: flex !important;
+                overflow-x: auto !important;
+                white-space: nowrap !important;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
+                mask-image: linear-gradient(to right, black 82%, transparent 100%) !important;
+                -webkit-mask-image: linear-gradient(to right, black 82%, transparent 100%) !important;
+                padding-right: 32px !important;
+            }
+
+            header nav::-webkit-scrollbar {
+                display: none !important;
+            }
+
+            header nav > div {
+                display: flex !important;
+                white-space: nowrap !important;
+                padding-right: 32px !important;
+            }
+        }
+
         .hero {
             display: flex;
             flex-direction: column;
