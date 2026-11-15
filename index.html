@@ -701,6 +701,34 @@
             transform: translateX(4px)
         }
 
+        .hero .pill {
+            color: #2B2D42;
+            background: rgba(43, 45, 66, 0.05);
+            border: 1px solid rgba(43, 45, 66, 0.16);
+            padding: 14px 24px;
+            font-size: 1rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+
+        .hero .pill:hover {
+            border-color: var(--ac);
+            background: rgba(43, 45, 66, 0.09);
+            color: #2B2D42;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (max-width: 640px) {
+            .hero .pill {
+                padding: 12px 18px;
+                font-size: 0.92rem;
+                gap: 8px;
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+        }
+
         @keyframes pulse {
             0% {
                 box-shadow: 0 0 0 0 color-mix(in srgb, var(--ac) 55%, transparent)
@@ -2083,8 +2111,8 @@
                 <!-- Botão de Agendamento -->
                 <a href="https://wa.me/5541920048552?text=Ol%C3%A1%2C%20Dr.%20Humberto!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento."
                     target="_blank" rel="noopener noreferrer"
-                    class="btn inline-block bg-[#9A031E] hover:bg-[#7a0217] text-white font-medium px-8 py-3.5 rounded-full shadow transition text-base">
-                    Agendar Sessão Online
+                    class="pill">
+                    <span class="dot"></span>Agendar a 1ª Sessão Online<span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#25D366" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6z" /><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z" /></svg></span>
                 </a>
             </div>
 
