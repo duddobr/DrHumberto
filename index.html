@@ -893,120 +893,54 @@
         }
 
         /* =========================================================
-           ANIMAÇÃO NAS 3 FOTOS PARA A VERSÃO MOBILE (E DESKTOP)
+           ANIMAÇÃO DEDICADA (.foto-animada) - DESKTOP E MOBILE
            ========================================================= */
-        .photo,
-        .hero-photo img,
-        .phw img,
-        .sobre-ph,
-        .qph {
+        @keyframes fotoFlutuarContinuo {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-5px) scale(1.015);
+            }
+        }
+
+        .foto-animada {
+            opacity: 0;
+            transform: translateY(24px) scale(0.94);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.4s ease;
+            will-change: opacity, transform;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
-            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease, box-shadow 0.4s ease !important;
-            will-change: transform, opacity;
         }
 
-        /* Estado inicial antes de aparecer na tela (mobile e desktop) */
-        .rv .photo,
-        .rv .hero-photo img,
-        .rv .phw img,
-        .rv .sobre-ph,
-        .rv .qph,
-        .photo.rv,
-        .sobre-ph.rv,
-        .qph.rv {
-            opacity: 0;
-            transform: translateY(20px) scale(0.95);
-        }
-
-        /* Estado final animado quando entra na tela */
-        .rv.in .photo,
-        .rv.in .hero-photo img,
-        .rv.in .phw img,
-        .rv.in .sobre-ph,
-        .rv.in .qph,
-        .photo.rv.in,
-        .sobre-ph.rv.in,
-        .qph.rv.in {
-            opacity: 1;
+        .foto-animada.visivel {
+            opacity: 1 !important;
             transform: translateY(0) scale(1);
+            animation: fotoFlutuarContinuo 4s ease-in-out infinite 0.8s;
         }
 
-        .photo:hover,
-        .hero-photo img:hover,
-        .phw img:hover,
-        .sobre-ph:hover,
-        .qph:hover {
-            transform: scale(1.03);
+        .foto-animada:hover,
+        .foto-animada:active {
+            transform: translateY(-6px) scale(1.05) !important;
+            box-shadow: 0 12px 28px rgba(166, 110, 12, 0.25) !important;
+            animation-play-state: paused;
         }
 
-        /* Efeito ao tocar (mobile) ou passar o mouse (desktop) */
-        @media (max-width: 767px) {
-
-            .photo:active,
-            .hero-photo img:active,
-            .phw img:active,
-            .sobre-ph:active,
-            .qph:active,
-            .photo:hover,
-            .hero-photo img:hover,
-            .phw img:hover,
-            .sobre-ph:hover,
-            .qph:hover,
-            .phw:active .photo,
-            .phw:active img,
-            .phw:hover .photo,
-            .phw:hover img {
-                transform: scale(1.04) !important;
-            }
-        }
-
-        /* =========================================================
-           ANIMAÇÃO UNIFICADA PARA AS 3 FOTOS NO MOBILE
-           ========================================================= */
-        @media (max-width: 767px) {
-
-            .hero-photo.rv,
-            .rv .sobre-ph {
-                opacity: 0;
-                transform: translateY(22px) scale(0.95);
-                transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) !important;
-                will-change: opacity, transform;
-            }
-
-            .hero-photo.rv.in,
-            .rv.in .sobre-ph {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* Animação exclusiva e garantida para a foto da citação */
-        @keyframes flutuarSuave {
-            0% {
-                opacity: 0;
-                transform: translateY(20px) scale(0.92);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
+        @media (prefers-reduced-motion: reduce) {
+            .foto-animada,
+            .foto-animada.visivel {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
             }
         }
 
         img[alt="Dr. Humberto Costa"] {
             display: block;
             margin: 0 auto 1.5rem auto;
-            animation: flutuarSuave 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease !important;
-            will-change: transform, opacity;
-        }
-
-        img[alt="Dr. Humberto Costa"]:hover,
-        img[alt="Dr. Humberto Costa"]:active {
-            transform: scale(1.06) !important;
-            box-shadow: 0 12px 28px rgba(166, 110, 12, 0.25) !important;
         }
 
         .quote {
@@ -2096,7 +2030,7 @@
 
             <!-- Foto de Perfil Redonda -->
             <div class="phw hero-photo rv">
-                <img class="sobre-ph" src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista">
+                <img class="sobre-ph foto-animada" src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista">
             </div>
         </div>
     </section>
@@ -2107,7 +2041,7 @@
             <span class="tag">Quem sou</span>
             <h2>Dr. Humberto Costa | Psicanalista</h2>
             <div class="sobre-row">
-                <img class="qph sobre-ph rv in" src="images/dr-humberto-quemsou.jpg"
+                <img class="qph sobre-ph rv in foto-animada" src="images/dr-humberto-quemsou.jpg"
                     alt="Dr. Humberto Costa, psicanalista">
                 <p class="lead"><strong class="desktop-bold">Acredito na terapia como um espaço de escuta profundamente
                         humana, empática e ética.</strong><br class="desktop-only"> A psicanálise sempre esteve no
@@ -2144,7 +2078,7 @@
         <div class="max-w-4xl mx-auto px-6 text-center sm:bg-transparent sm:border-0 sm:shadow-none sm:p-0">
             <!-- Foto de Perfil Centralizada -->
             <div class="rv">
-                <img class="sobre-ph" src="imagens/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa">
+                <img class="sobre-ph foto-animada" src="imagens/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa">
             </div>
 
             <!-- Citação -->
@@ -2447,6 +2381,36 @@
             if (!('IntersectionObserver' in window)) return;
             var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { threshold: .15 });
             els.forEach(function (el, i) { el.classList.add('rv'); if (el.classList.contains('card')) el.style.transitionDelay = ((i % 3) * 0.12) + 's'; io.observe(el) });
+        })();
+
+        // IntersectionObserver dedicado para .foto-animada (Desktop e Mobile)
+        (function () {
+            function initFotoAnimada() {
+                var fotos = document.querySelectorAll('.foto-animada');
+                if (!fotos.length) return;
+                if (!('IntersectionObserver' in window)) {
+                    fotos.forEach(function (f) { f.classList.add('visivel'); });
+                    return;
+                }
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visivel');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                fotos.forEach(function (foto) {
+                    observer.observe(foto);
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initFotoAnimada);
+            } else {
+                initFotoAnimada();
+            }
         })();
     </script>
 </body>
