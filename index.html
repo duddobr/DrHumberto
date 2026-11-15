@@ -214,7 +214,9 @@
             scroll-behavior: smooth
         }
 
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box
         }
 
@@ -250,11 +252,41 @@
         }
 
         .hero {
-            display: grid;
-            grid-template-columns: 1.3fr 1fr;
-            gap: 40px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            padding: 56px 0 72px
+        }
+
+        .hero-photo,
+        .hero>div:last-child {
+            order: -1;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Restaura o layout lado a lado da seção principal APENAS no Desktop */
+        @media (min-width: 768px) {
+            .hero {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 3rem;
+            }
+
+            .hero-content,
+            .hero>div:first-child {
+                flex: 1;
+                text-align: left;
+            }
+
+            .hero-photo,
+            .hero-img,
+            .hero>img,
+            .hero>div:last-child {
+                order: 2;
+                flex-shrink: 0;
+                margin-bottom: 0;
+            }
         }
 
         .tag {
@@ -729,6 +761,15 @@
             }
         }
 
+        @media (max-width: 767px) {
+            .desktop-only {
+                display: none;
+            }
+            .desktop-bold {
+                font-weight: normal;
+            }
+        }
+
         .quote {
             font-family: Fraunces, Georgia, serif;
             font-size: 1.5rem;
@@ -1017,11 +1058,6 @@
         }
 
         @media(max-width:760px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 24px
-            }
-
             .photo {
                 max-width: 220px;
                 order: -1
@@ -1168,7 +1204,7 @@
             transform: rotate(90deg)
         }
 
-        #trajetoria .space-y-3 > div + div {
+        #trajetoria .space-y-3>div+div {
             margin-top: 14px
         }
 
@@ -1765,11 +1801,19 @@
             <!-- Menu Superior com Rolagem Horizontal no Mobile -->
             <nav class="w-full sm:w-auto overflow-x-auto no-scrollbar py-1">
                 <div class="flex items-center gap-2 whitespace-nowrap justify-start sm:justify-end">
-                    <a href="#sobre" class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Quem sou</a>
-                    <a href="#atendimento" class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Atendimento</a>
-                    <a href="#trajetoria" class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Trajetória acadêmica</a>
-                    <a href="#faq" class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Dúvidas</a>
-                    <a href="#contato" class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Fale comigo</a>
+                    <a href="#sobre"
+                        class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Quem
+                        sou</a>
+                    <a href="#atendimento"
+                        class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Atendimento</a>
+                    <a href="#trajetoria"
+                        class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Trajetória
+                        acadêmica</a>
+                    <a href="#faq"
+                        class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Dúvidas</a>
+                    <a href="#contato"
+                        class="text-xs bg-white border border-gray-300 text-[#2B2D42] px-3 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition">Fale
+                        comigo</a>
                 </div>
             </nav>
         </div>
@@ -1777,35 +1821,45 @@
 
     <!-- Seção Hero Responsiva -->
     <section class="py-12 bg-[#F8F7F4]">
-        <div class="max-w-4xl mx-auto px-6 text-center sm:text-left flex flex-col items-center sm:items-start">
-            <!-- Foto de Perfil Redonda -->
-            <div class="mb-6">
-                <img src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow-md border-4 border-white">
+        <div class="max-w-4xl mx-auto px-6 hero">
+            <!-- Conteúdo de texto -->
+            <div class="hero-content text-center sm:text-left flex flex-col items-center sm:items-start">
+                <span class="text-sm font-semibold tracking-widest text-[#9A031E] uppercase mb-2">PSICANÁLISE
+                    ONLINE</span>
+                <h1 class="text-3xl sm:text-5xl font-serif text-[#2B2D42] mb-6 leading-tight">
+                    Terapia para fortalecer o seu emocional e transformar a sua vida.
+                </h1>
+                <p class="text-base sm:text-lg text-gray-700 leading-relaxed font-normal mb-6">
+                    Vamos construir, juntos, saídas para aquilo que hoje paralisa a sua vida.
+                </p>
+
+                <!-- Local de Atendimento com Bandeiras Alinhadas -->
+                <p
+                    class="text-gray-600 text-sm flex items-center justify-center sm:justify-start gap-1.5 flex-wrap mb-8">
+                    <span>📍</span> Atendimento para todo o <br class="sm:hidden">
+                    <span class="inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
+                        <img src="imagens/bandeira-brasil.svg" alt="Brasil"
+                            style="width: 20px; height: 14px; display: inline-block; vertical-align: middle;"> Brasil
+                    </span> e
+                    <span class="inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
+                        <img src="imagens/bandeira-portugal.svg" alt="Portugal"
+                            style="width: 20px; height: 14px; display: inline-block; vertical-align: middle;"> Exterior
+                    </span>.
+                </p>
+
+                <!-- Botão de Agendamento -->
+                <a href="https://wa.me/5541920048552?text=Ol%C3%A1%2C%20Dr.%20Humberto!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento."
+                    target="_blank" rel="noopener noreferrer"
+                    class="inline-block bg-[#9A031E] hover:bg-[#7a0217] text-white font-medium px-8 py-3.5 rounded-full shadow transition text-base">
+                    Agendar Sessão Online
+                </a>
             </div>
 
-            <span class="text-sm font-semibold tracking-widest text-[#9A031E] uppercase mb-2">PSICANÁLISE ONLINE</span>
-            <h1 class="text-3xl sm:text-5xl font-serif text-[#2B2D42] mb-6 leading-tight">
-                Terapia para fortalecer o seu emocional e transformar a sua vida.
-            </h1>
-            <p class="text-base sm:text-lg text-gray-700 leading-relaxed font-normal mb-6">
-                Vamos construir, juntos, saídas para aquilo que hoje paralisa a sua vida.
-            </p>
-
-            <!-- Local de Atendimento com Bandeiras Alinhadas -->
-            <p class="text-gray-600 text-sm flex items-center justify-center sm:justify-start gap-1.5 flex-wrap mb-8">
-                <span>📍</span> Atendimento para todo o <br class="sm:hidden">
-                <span class="inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
-                    <img src="imagens/bandeira-brasil.svg" alt="Brasil" style="width: 20px; height: 14px; display: inline-block; vertical-align: middle;"> Brasil
-                </span> e 
-                <span class="inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
-                    <img src="imagens/bandeira-portugal.svg" alt="Portugal" style="width: 20px; height: 14px; display: inline-block; vertical-align: middle;"> Exterior
-                </span>.
-            </p>
-
-            <!-- Botão de Agendamento -->
-            <a href="https://wa.me/5541920048552?text=Ol%C3%A1%2C%20Dr.%20Humberto!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento." target="_blank" rel="noopener noreferrer" class="inline-block bg-[#9A031E] hover:bg-[#7a0217] text-white font-medium px-8 py-3.5 rounded-full shadow transition text-base">
-                Agendar Sessão Online
-            </a>
+            <!-- Foto de Perfil Redonda -->
+            <div class="hero-photo">
+                <img src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista"
+                    class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow-md border-4 border-white hero-img">
+            </div>
         </div>
     </section>
 
@@ -1816,7 +1870,7 @@
             <h2>Dr. Humberto Costa | Psicanalista</h2>
             <div class="sobre-row">
                 <img class="qph sobre-ph rv in" src="images/dr-humberto-quemsou.jpg" alt="Dr. Humberto Costa, psicanalista">
-                <p class="lead"><strong>Acredito na terapia como um espaço de escuta profundamente humana, empática e ética.</strong> <span class="hidden sm:inline"><br></span>A psicanálise sempre esteve no centro dos meus interesses de investigação, da graduação ao doutorado e pós-doutorado. O tema permeou minhas pesquisas, movido pela vontade de compreender as particularidades do funcionamento da mente humana. Hoje, apoiado na experiência clínica e formação acadêmica, posso acompanhar você na compreensão dos conflitos e repetições que te paralisam, abrindo caminho para escolhas mais livres e conscientes.</p>
+                <p class="lead"><strong class="desktop-bold">Acredito na terapia como um espaço de escuta profundamente humana, empática e ética.</strong><br class="desktop-only"> A psicanálise sempre esteve no centro dos meus interesses de investigação, da graduação ao doutorado e pós-doutorado. O tema permeou minhas pesquisas, movido pela vontade de compreender as particularidades do funcionamento da mente humana. Hoje, apoiado na experiência clínica e formação acadêmica, posso acompanhar você na compreensão dos conflitos e repetições que te paralisam, abrindo caminho para escolhas mais livres e conscientes.</p>
             </div>
         </section>
 
@@ -1845,12 +1899,14 @@
         <div class="max-w-4xl mx-auto px-6 text-center sm:bg-transparent sm:border-0 sm:shadow-none sm:p-0">
             <!-- Foto de Perfil Centralizada -->
             <div class="flex justify-center mb-6">
-                <img src="imagens/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa" class="w-36 h-36 rounded-full object-cover shadow-md border-4 border-[#F8F7F4]">
+                <img src="imagens/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa"
+                    class="w-36 h-36 rounded-full object-cover shadow-md border-4 border-[#F8F7F4]">
             </div>
 
             <!-- Citação -->
             <blockquote class="text-xl sm:text-2xl font-serif text-[#2B2D42] italic max-w-2xl mx-auto">
-                “O sofrimento humano não se resolve com fórmulas prontas. Enquanto a internet te oferece conselhos, eu te ofereço uma escuta atenciosa para a sua história.”
+                “O sofrimento humano não se resolve com fórmulas prontas. Enquanto a internet te oferece conselhos, eu
+                te ofereço uma escuta atenciosa para a sua história.”
             </blockquote>
         </div>
     </section>
@@ -1868,12 +1924,16 @@
                     </summary>
                     <div class="mt-4 pl-6 space-y-3 text-gray-700">
                         <div class="border-l-2 border-[#9A031E] pl-4">
-                            <p class="font-semibold text-sm text-[#2B2D42]">Pós-Doutorado em Educação | Educação Estética e Afetividade Humana</p>
-                            <p class="text-xs text-gray-600">Universidade Federal do Paraná (UFPR), Brasil · Bolsista CAPES</p>
+                            <p class="font-semibold text-sm text-[#2B2D42]">Pós-Doutorado em Educação | Educação
+                                Estética e Afetividade Humana</p>
+                            <p class="text-xs text-gray-600">Universidade Federal do Paraná (UFPR), Brasil · Bolsista
+                                CAPES</p>
                         </div>
                         <div class="border-l-2 border-[#9A031E] pl-4">
-                            <p class="font-semibold text-sm text-[#2B2D42]">Pós-Doutorado em Design | Estética e Afetividade Humana</p>
-                            <p class="text-xs text-gray-600">Universidade do Porto (U.PORTO), Portugal · Bolsista CNPq</p>
+                            <p class="font-semibold text-sm text-[#2B2D42]">Pós-Doutorado em Design | Estética e
+                                Afetividade Humana</p>
+                            <p class="text-xs text-gray-600">Universidade do Porto (U.PORTO), Portugal · Bolsista CNPq
+                            </p>
                         </div>
                     </div>
                 </details>
@@ -1885,11 +1945,13 @@
                     </summary>
                     <div class="mt-4 pl-6 space-y-3 text-gray-700">
                         <div class="border-l-2 border-[#9A031E] pl-4">
-                            <p class="font-semibold text-sm text-[#2B2D42]">Doutorado em Educação | Educação Estética e Afetividade Humana</p>
+                            <p class="font-semibold text-sm text-[#2B2D42]">Doutorado em Educação | Educação Estética e
+                                Afetividade Humana</p>
                             <p class="text-xs text-gray-600">Universidade Federal do Paraná (UFPR), Brasil</p>
                         </div>
                         <div class="border-l-2 border-[#9A031E] pl-4">
-                            <p class="font-semibold text-sm text-[#2B2D42]">Doutorado em Design | Estética e Afetividade Humana</p>
+                            <p class="font-semibold text-sm text-[#2B2D42]">Doutorado em Design | Estética e Afetividade
+                                Humana</p>
                             <p class="text-xs text-gray-600">Universidade Federal do Paraná (UFPR), Brasil</p>
                         </div>
                     </div>
@@ -1902,8 +1964,10 @@
                     </summary>
                     <div class="mt-4 pl-6 space-y-3 text-gray-700">
                         <div class="border-l-2 border-[#9A031E] pl-4">
-                            <p class="font-semibold text-sm text-[#2B2D42]">Mestrado em Filosofia | Educação Estética</p>
-                            <p class="text-xs text-gray-600">Pontifícia Universidade Católica do Paraná (PUCPR), Brasil</p>
+                            <p class="font-semibold text-sm text-[#2B2D42]">Mestrado em Filosofia | Educação Estética
+                            </p>
+                            <p class="text-xs text-gray-600">Pontifícia Universidade Católica do Paraná (PUCPR), Brasil
+                            </p>
                         </div>
                     </div>
                 </details>
@@ -1924,7 +1988,8 @@
                         </div>
                         <div class="border-l-2 border-[#9A031E] pl-4">
                             <p class="font-semibold text-sm text-[#2B2D42]">Leitura de Múltiplas Linguagens</p>
-                            <p class="text-xs text-gray-600">Pontifícia Universidade Católica do Paraná (PUCPR), Brasil</p>
+                            <p class="text-xs text-gray-600">Pontifícia Universidade Católica do Paraná (PUCPR), Brasil
+                            </p>
                         </div>
                     </div>
                 </details>
@@ -1940,8 +2005,10 @@
                             <p class="text-xs text-gray-600">Escola de Psicanálise de Curitiba (EPC), Brasil</p>
                         </div>
                         <div class="border-l-2 border-[#9A031E] pl-4">
-                            <p class="font-semibold text-sm text-[#2B2D42]">Metodologias, Práticas Pedagógicas e Tecnologias Educacionais</p>
-                            <p class="text-xs text-gray-600">Escola de Formação Permanente do Magistério (ESFAPEM), Brasil</p>
+                            <p class="font-semibold text-sm text-[#2B2D42]">Metodologias, Práticas Pedagógicas e
+                                Tecnologias Educacionais</p>
+                            <p class="text-xs text-gray-600">Escola de Formação Permanente do Magistério (ESFAPEM),
+                                Brasil</p>
                         </div>
                         <div class="border-l-2 border-[#9A031E] pl-4">
                             <p class="font-semibold text-sm text-[#2B2D42]">Tecnologias Digitais na Educação</p>
@@ -2078,10 +2145,12 @@
                 <p class="text-gray-600 text-sm flex items-center justify-center gap-1.5 flex-wrap">
                     <span>📍</span> Atendimento para todo o <br class="sm:hidden">
                     <span class="inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
-                        <img src="imagens/bandeira-brasil.svg" alt="Brasil" style="width: 20px; height: 14px; display: inline-block; vertical-align: middle;"> Brasil
-                    </span> e 
+                        <img src="imagens/bandeira-brasil.svg" alt="Brasil"
+                            style="width: 20px; height: 14px; display: inline-block; vertical-align: middle;"> Brasil
+                    </span> e
                     <span class="inline-flex items-center gap-1 font-semibold text-[#2B2D42]">
-                        <img src="imagens/bandeira-portugal.svg" alt="Portugal" style="width: 20px; height: 14px; display: inline-block; vertical-align: middle;"> Exterior
+                        <img src="imagens/bandeira-portugal.svg" alt="Portugal"
+                            style="width: 20px; height: 14px; display: inline-block; vertical-align: middle;"> Exterior
                     </span>.
                 </p>
             </div>
