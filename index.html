@@ -1349,6 +1349,11 @@
             line-height: 1.5rem;
         }
 
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+
         .text-2xl {
             font-size: 1.5rem;
             line-height: 2rem;
@@ -1470,6 +1475,14 @@
             display: inline-block;
         }
 
+        .block {
+            display: block !important;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
         .font-medium {
             font-weight: 500;
         }
@@ -1494,6 +1507,10 @@
             text-transform: uppercase;
         }
 
+        .mt-1 {
+            margin-top: 0.25rem;
+        }
+
         .mb-2 {
             margin-bottom: 0.5rem;
             display: inline-block;
@@ -1515,6 +1532,14 @@
             height: 8rem;
         }
 
+        .w-36 {
+            width: 9rem;
+        }
+
+        .h-36 {
+            height: 9rem;
+        }
+
         .object-cover {
             object-fit: cover;
         }
@@ -1529,6 +1554,14 @@
         }
 
         :root[data-theme="dark"] .border-white {
+            border-color: var(--line);
+        }
+
+        .border-\[\#F8F7F4\] {
+            border-color: #F8F7F4;
+        }
+
+        :root[data-theme="dark"] .border-\[\#F8F7F4\] {
             border-color: var(--line);
         }
 
@@ -1675,18 +1708,35 @@
         </div>
     </section>
 
-    <div class="w">
-        <section id="sobre">
-            <span class="tag">Quem sou</span>
-            <h2>Dr. Humberto Costa | Psicanalista</h2>
-            <div class="sobre-row">
-                <img class="qph sobre-ph" src="images/dr-humberto-quemsou.jpg" alt="Dr. Humberto Costa, psicanalista">
-                <p class="lead">
-                    <strong>Acredito na terapia como um espaço de escuta profundamente humana, empática e ética.</strong><br>
-                    A psicanálise sempre esteve no centro dos meus interesses de investigação, da graduação ao doutorado e pós-doutorado. O tema permeou minhas pesquisas, movido pela vontade de compreender as particularidades do funcionamento da mente humana. Hoje, apoiado na experiência clínica e formação acadêmica, posso acompanhar você na compreensão dos conflitos e repetições que te paralisam, abrindo caminho para escolhas mais livres e conscientes.
+    <!-- Seção Quem Sou -->
+    <section id="sobre" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <span class="text-sm font-semibold tracking-widest text-[#9A031E] uppercase block text-center sm:text-left mb-2">QUEM SOU</span>
+            
+            <!-- Título e Profissão Centralizados no Mobile e Alinhados à Esquerda no PC -->
+            <div class="text-center sm:text-left mb-8">
+                <h2 class="text-3xl font-serif font-bold text-[#2B2D42]">
+                    Dr. Humberto Costa
+                </h2>
+                <p class="text-xl font-serif text-gray-700 mt-1">
+                    Psicanalista
                 </p>
             </div>
-        </section>
+
+            <!-- Foto de Perfil Centralizada no Mobile -->
+            <div class="flex justify-center sm:justify-start mb-8">
+                <img src="imagens/dr-humberto-foto.jpg" alt="Dr. Humberto Costa" class="w-36 h-36 rounded-full object-cover shadow-md border-4 border-[#F8F7F4]">
+            </div>
+
+            <!-- Texto Descritivo -->
+            <p class="text-gray-700 leading-relaxed font-normal">
+                <strong>Acredito na terapia como um espaço de escuta profundamente humana, empática e ética.</strong><br><br>
+                A psicanálise sempre esteve no centro dos meus interesses de investigação, da graduação ao doutorado e pós-doutorado. O tema permeou minhas pesquisas, movido pela vontade de compreender as particularidades do funcionamento da mente humana. Hoje, apoiado na experiência clínica e formação acadêmica, posso acompanhar você na compreensão dos conflitos e repetições que te paralisam, abrindo caminho para escolhas mais livres e conscientes.
+            </p>
+        </div>
+    </section>
+
+    <div class="w">
 
         <section id="atendimento">
             <span class="tag">Atendimento</span>
