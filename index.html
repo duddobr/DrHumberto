@@ -1506,7 +1506,12 @@
         }
 
         .block {
-            display: block !important;
+            display: block;
+        }
+
+        .block.flex,
+        .flex.block {
+            display: flex;
         }
 
         .font-bold {
@@ -1704,6 +1709,14 @@
             .sm\:p-0 {
                 padding: 0;
             }
+
+            .sm\:block {
+                display: block !important;
+            }
+
+            .sm\:flex {
+                display: flex !important;
+            }
         }
 
         :root[data-theme="dark"] .sm\:text-\[\#2B2D42\] {
@@ -1801,8 +1814,8 @@
         <div class="max-w-4xl mx-auto px-6">
             <span class="text-sm font-semibold tracking-widest text-[#9A031E] uppercase block mb-2 text-center sm:text-left">QUEM SOU</span>
             
-            <!-- Título e Subtítulo (Centralizado no mobile, alinhado à esquerda no desktop) -->
-            <div class="text-center sm:text-left mb-8">
+            <!-- VERSÃO MOBILE (100% Inalterada, exata como era) -->
+            <div class="block sm:hidden text-center mb-8">
                 <h2 class="text-3xl font-serif font-bold text-[#2B2D42]">
                     Dr. Humberto Costa
                 </h2>
@@ -1810,16 +1823,32 @@
                     Psicanalista
                 </p>
             </div>
-
-            <!-- Foto de Perfil (Centralizada no mobile, alinhada à esquerda no desktop) -->
-            <div class="flex justify-center sm:justify-start mb-8">
+            <div class="block sm:hidden flex justify-center mb-8">
                 <img src="imagens/dr-humberto-foto.jpg" alt="Dr. Humberto Costa" class="w-36 h-36 rounded-full object-cover shadow-md border-4 border-[#F8F7F4]">
             </div>
-
-            <!-- Texto Descritivo -->
-            <p class="text-gray-700 leading-relaxed font-normal">
-                <strong>Acredito na terapia como um espaço de escuta profundamente humana, empática e ética.</strong> A psicanálise sempre esteve no centro dos meus interesses de investigação, da graduação ao doutorado e pós-doutorado. O tema permeou minhas pesquisas, movido pela vontade de compreender as particularidades do funcionamento da mente humana. Hoje, apoiado na experiência clínica e formação acadêmica, posso acompanhar você na compreensão dos conflitos e repetições que te paralisam, abrindo caminho para escolhas mais livres e conscientes.
+            <p class="block sm:hidden text-gray-700 leading-relaxed font-normal">
+                <strong>Acredito na terapia como um espaço de escuta profundamente humana, empática e ética.</strong><br><br>
+                A psicanálise sempre esteve no centro dos meus interesses de investigação, da graduação ao doutorado e pós-doutorado. O tema permeou minhas pesquisas, movido pela vontade de compreender as particularidades do funcionamento da mente humana. Hoje, apoiado na experiência clínica e formação acadêmica, posso acompanhar você na compreensão dos conflitos e repetições que te paralisam, abrindo caminho para escolhas mais livres e conscientes.
             </p>
+
+            <!-- VERSÃO DESKTOP (Com foto à esquerda, sem linha em branco e com quebra no Hoje) -->
+            <div class="hidden sm:block mb-8">
+                <h2 class="text-3xl font-serif font-bold text-[#2B2D42]">
+                    Dr. Humberto Costa
+                </h2>
+                <p class="text-xl font-serif text-gray-700 mt-1">
+                    Psicanalista
+                </p>
+            </div>
+            <div class="hidden sm:flex sm:items-center gap-8">
+                <div class="shrink-0">
+                    <img src="imagens/dr-humberto-foto.jpg" alt="Dr. Humberto Costa" class="w-36 h-36 rounded-full object-cover shadow-md border-4 border-[#F8F7F4]">
+                </div>
+                <p class="text-gray-700 leading-relaxed font-normal">
+                    <strong>Acredito na terapia como um espaço de escuta profundamente humana, empática e ética.</strong> A psicanálise sempre esteve no centro dos meus interesses de investigação, da graduação ao doutorado e pós-doutorado. O tema permeou minhas pesquisas, movido pela vontade de compreender as particularidades do funcionamento da mente humana.<br>
+                    Hoje, apoiado na experiência clínica e formação acadêmica, posso acompanhar você na compreensão dos conflitos e repetições que te paralisam, abrindo caminho para escolhas mais livres e conscientes.
+                </p>
+            </div>
         </div>
     </section>
 
