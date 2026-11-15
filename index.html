@@ -936,6 +936,16 @@
             }
         }
 
+        /* Animação halo para a foto da Citação APENAS no Desktop */
+        @media (min-width: 768px) {
+
+            img[alt="Dr. Humberto Costa"].in,
+            img[alt="Dr. Humberto Costa"].visivel,
+            .rv.in img[alt="Dr. Humberto Costa"] {
+                animation: halo 3s ease-out infinite !important;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
 
             .foto-animada,
@@ -2374,7 +2384,9 @@
             </div>
         </section>
 
-        <footer><strong>Dr. Humberto Costa</strong> | Psicanalista | Um espaço seguro para a sua saúde emocional
+        <footer>
+            <strong>Dr. Humberto Costa</strong> | Psicanalista | Um espaço seguro para a sua saúde emocional
+            <div style="font-size: 0.8em; margin-top: 8px; opacity: 0.75;">© 2026 Dr. Humberto Costa. Todos os direitos reservados.</div>
         </footer>
     </div>
     <a class="wa-float"
