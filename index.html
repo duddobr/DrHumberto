@@ -921,7 +921,23 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        /* Animação halo idêntica à de "Quem sou" para Hero e Citação APENAS no Mobile */
+        @media (max-width: 767px) {
+
+            .hero-photo img.in,
+            .hero-photo img.visivel,
+            .hero .phw img.in,
+            .hero .phw img.visivel,
+            img[alt="Dr. Humberto Costa"].in,
+            img[alt="Dr. Humberto Costa"].visivel,
+            .foto-animada.in,
+            .foto-animada.visivel {
+                animation: halo 3s ease-out infinite !important;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
+
             .foto-animada,
             .foto-animada.in,
             .foto-animada.visivel {
@@ -2024,7 +2040,8 @@
 
             <!-- Foto de Perfil Redonda -->
             <div class="phw hero-photo rv">
-                <img class="sobre-ph rv foto-animada" src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista">
+                <img class="sobre-ph rv foto-animada" src="imagens/dr-humberto.jpg"
+                    alt="Dr. Humberto Costa, psicanalista">
             </div>
         </div>
     </section>
