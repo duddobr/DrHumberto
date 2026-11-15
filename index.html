@@ -865,35 +865,64 @@
             }
         }
 
-        /* Garante a animação nas 3 fotos tanto no Mobile quanto no Desktop */
+        /* =========================================================
+           ANIMAÇÃO NAS 3 FOTOS PARA A VERSÃO MOBILE (E DESKTOP)
+           ========================================================= */
         .photo,
         .sobre-ph,
         .qph {
-            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease, box-shadow 0.4s ease !important;
+            will-change: transform, opacity;
         }
 
-        /* Efeito suave de entrada e interação nas fotos */
+        /* Estado inicial antes de aparecer na tela (mobile e desktop) */
         .rv .photo,
         .rv .sobre-ph,
-        .rv .qph {
+        .rv .qph,
+        .photo.rv,
+        .sobre-ph.rv,
+        .qph.rv {
             opacity: 0;
-            transform: translateY(18px) scale(0.96);
+            transform: translateY(20px) scale(0.95);
         }
 
+        /* Estado final animado quando entra na tela */
         .rv.in .photo,
         .rv.in .sobre-ph,
-        .rv.in .qph {
+        .rv.in .qph,
+        .photo.rv.in,
+        .sobre-ph.rv.in,
+        .qph.rv.in {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
 
-        .photo:active,
-        .sobre-ph:active,
-        .qph:active,
         .photo:hover,
         .sobre-ph:hover,
         .qph:hover {
             transform: scale(1.03);
+        }
+
+        /* Efeito ao tocar (mobile) ou passar o mouse (desktop) */
+        @media (max-width: 767px) {
+
+            .photo:active,
+            .sobre-ph:active,
+            .qph:active,
+            .phw:active .photo {
+                transform: scale(1.04) !important;
+            }
+        }
+
+        /* Efeito ao tocar (mobile) ou passar o mouse (desktop) */
+        @media (max-width: 767px) {
+
+            .photo:active,
+            .sobre-ph:active,
+            .qph:active,
+            .phw:active .photo {
+                transform: scale(1.04) !important;
+            }
         }
 
         .quote {
@@ -2031,8 +2060,7 @@
         <div class="max-w-4xl mx-auto px-6 text-center sm:bg-transparent sm:border-0 sm:shadow-none sm:p-0">
             <!-- Foto de Perfil Centralizada -->
             <div class="flex justify-center mb-6">
-                <img src="imagens/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa"
-                    class="photo w-36 h-36 rounded-full object-cover shadow-md border-4 border-[#F8F7F4]">
+                <img class="qph rv in" src="images/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa">
             </div>
 
             <!-- Citação -->
