@@ -281,7 +281,10 @@
                 display: none;
             }
 
-            .hero .phw .photo {
+            .hero .phw .photo,
+            .hero .phw .sobre-ph,
+            .hero .phw img,
+            .hero-photo img {
                 width: 8rem;
                 height: 8rem;
                 border-radius: 50%;
@@ -368,7 +371,10 @@
                 justify-content: center;
             }
 
-            .hero .phw .photo {
+            .hero .phw .photo,
+            .hero .phw .sobre-ph,
+            .hero .phw img,
+            .hero-photo img {
                 width: 100%;
                 height: 100%;
                 border-radius: 50%;
@@ -378,7 +384,10 @@
                 transition: transform 0.4s ease;
             }
 
-            .hero .phw:hover .photo {
+            .hero .phw:hover .photo,
+            .hero .phw:hover .sobre-ph,
+            .hero .phw:hover img,
+            .hero-photo:hover img {
                 transform: scale(1.03);
             }
         }
@@ -535,7 +544,8 @@
             animation: pop 1s cubic-bezier(.2, .8, .2, 1) both, fl 6s ease-in-out 1s infinite
         }
 
-        .phw .photo {
+        .phw .photo,
+        .phw img {
             animation: none;
             max-width: none;
             margin: 0;
@@ -886,6 +896,8 @@
            ANIMAÇÃO NAS 3 FOTOS PARA A VERSÃO MOBILE (E DESKTOP)
            ========================================================= */
         .photo,
+        .hero-photo img,
+        .phw img,
         .sobre-ph,
         .qph {
             cursor: pointer;
@@ -896,6 +908,8 @@
 
         /* Estado inicial antes de aparecer na tela (mobile e desktop) */
         .rv .photo,
+        .rv .hero-photo img,
+        .rv .phw img,
         .rv .sobre-ph,
         .rv .qph,
         .photo.rv,
@@ -907,6 +921,8 @@
 
         /* Estado final animado quando entra na tela */
         .rv.in .photo,
+        .rv.in .hero-photo img,
+        .rv.in .phw img,
         .rv.in .sobre-ph,
         .rv.in .qph,
         .photo.rv.in,
@@ -917,6 +933,8 @@
         }
 
         .photo:hover,
+        .hero-photo img:hover,
+        .phw img:hover,
         .sobre-ph:hover,
         .qph:hover {
             transform: scale(1.03);
@@ -926,14 +944,41 @@
         @media (max-width: 767px) {
 
             .photo:active,
+            .hero-photo img:active,
+            .phw img:active,
             .sobre-ph:active,
             .qph:active,
             .photo:hover,
+            .hero-photo img:hover,
+            .phw img:hover,
             .sobre-ph:hover,
             .qph:hover,
             .phw:active .photo,
-            .phw:hover .photo {
+            .phw:active img,
+            .phw:hover .photo,
+            .phw:hover img {
                 transform: scale(1.04) !important;
+            }
+        }
+
+        /* =========================================================
+           ANIMAÇÃO UNIFICADA PARA AS 3 FOTOS NO MOBILE
+           ========================================================= */
+        @media (max-width: 767px) {
+
+            .hero-photo.rv,
+            .rv .sobre-ph {
+                opacity: 0;
+                transform: translateY(22px) scale(0.95);
+                transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) !important;
+                will-change: opacity, transform;
+            }
+
+            .hero-photo.rv.in,
+            .rv.in .sobre-ph {
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
         }
 
@@ -943,6 +988,7 @@
                 opacity: 0;
                 transform: translateY(20px) scale(0.92);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -950,6 +996,8 @@
         }
 
         img[alt="Dr. Humberto Costa"] {
+            display: block;
+            margin: 0 auto 1.5rem auto;
             animation: flutuarSuave 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
             transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease !important;
             will-change: transform, opacity;
@@ -2047,8 +2095,8 @@
             </div>
 
             <!-- Foto de Perfil Redonda -->
-            <div class="phw hero-photo">
-                <img src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista" class="photo">
+            <div class="phw hero-photo rv">
+                <img class="sobre-ph" src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista">
             </div>
         </div>
     </section>
@@ -2095,8 +2143,8 @@
     <section class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-6 text-center sm:bg-transparent sm:border-0 sm:shadow-none sm:p-0">
             <!-- Foto de Perfil Centralizada -->
-            <div class="flex justify-center mb-6 rv">
-                <img class="qph" src="images/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa">
+            <div class="rv">
+                <img class="sobre-ph" src="imagens/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa">
             </div>
 
             <!-- Citação -->
