@@ -257,13 +257,43 @@
             align-items: center;
         }
 
-        .hero-photo,
-        .hero>div:last-child {
-            order: -1;
-            margin-bottom: 1.5rem;
+        @media (max-width: 767px) {
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-photo,
+            .hero>div:last-child {
+                order: -1;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero .phw {
+                width: auto;
+                height: auto;
+                max-width: none;
+                background-color: transparent;
+                padding: 0;
+                animation: none;
+            }
+
+            .hero .phw::after {
+                display: none;
+            }
+
+            .hero .phw .photo {
+                width: 8rem;
+                height: 8rem;
+                border-radius: 50%;
+                border: 4px solid #ffffff;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                object-fit: cover;
+            }
         }
 
-        /* Restaura o layout lado a lado da seção principal APENAS no Desktop */
+        /* =========================================================
+           RESTAURAÇÃO DO HERO (TOPO) APENAS NO DESKTOP
+           ========================================================= */
         @media (min-width: 768px) {
             .hero {
                 display: flex;
@@ -271,21 +301,85 @@
                 align-items: center;
                 justify-content: space-between;
                 gap: 3rem;
+                max-width: 1120px;
+                margin: 0 auto;
+                padding: 4rem 1.5rem;
             }
 
-            .hero-content,
             .hero>div:first-child {
                 flex: 1;
+                max-width: 580px;
                 text-align: left;
             }
 
-            .hero-photo,
-            .hero-img,
-            .hero>img,
-            .hero>div:last-child {
-                order: 2;
+            .hero .tag {
+                color: #9A6B19;
+                /* Tom dourado/ocre original */
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                font-size: 0.85rem;
+                display: block;
+                margin-bottom: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 3.25rem;
+                line-height: 1.12;
+                color: #161B2E;
+                margin-bottom: 1.25rem;
+            }
+
+            .hero .lead {
+                font-size: 1.15rem;
+                color: #4A5568;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero .btn {
+                display: inline-block;
+                background-color: #A66E0C;
+                /* Cor dourada/ocre original do botão */
+                color: #FFFFFF;
+                font-weight: 600;
+                padding: 0.95rem 2rem;
+                border-radius: 9999px;
+                text-decoration: none;
+                margin-top: 1.5rem;
+                transition: background-color 0.2s ease, transform 0.2s ease;
+            }
+
+            .hero .btn:hover {
+                background-color: #8C5B08;
+                transform: translateY(-2px);
+            }
+
+            /* Foto circular grande à direita com o anel/halo creme */
+            .hero .phw {
                 flex-shrink: 0;
-                margin-bottom: 0;
+                width: 380px;
+                height: 380px;
+                border-radius: 50%;
+                background-color: #EFECE6;
+                /* Aro externo suave */
+                padding: 22px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero .phw .photo {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 4px solid #A66E0C;
+                /* Borda fina dourada interna */
+                transition: transform 0.4s ease;
+            }
+
+            .hero .phw:hover .photo {
+                transform: scale(1.03);
             }
         }
 
@@ -722,7 +816,7 @@
         .qrow.in .qph,
         #sobre.in .qph,
         #sobre.in .sobre-ph {
-            animation: pop 1s cubic-bezier(.2, .8, .2, 1) both, fl 6s ease-in-out 1s infinite, halo 3s ease-out infinite
+            animation: halo 3s ease-out infinite
         }
 
         .sobre-row {
@@ -765,9 +859,41 @@
             .desktop-only {
                 display: none;
             }
+
             .desktop-bold {
                 font-weight: normal;
             }
+        }
+
+        /* Garante a animação nas 3 fotos tanto no Mobile quanto no Desktop */
+        .photo,
+        .sobre-ph,
+        .qph {
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+
+        /* Efeito suave de entrada e interação nas fotos */
+        .rv .photo,
+        .rv .sobre-ph,
+        .rv .qph {
+            opacity: 0;
+            transform: translateY(18px) scale(0.96);
+        }
+
+        .rv.in .photo,
+        .rv.in .sobre-ph,
+        .rv.in .qph {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .photo:active,
+        .sobre-ph:active,
+        .qph:active,
+        .photo:hover,
+        .sobre-ph:hover,
+        .qph:hover {
+            transform: scale(1.03);
         }
 
         .quote {
@@ -1820,16 +1946,16 @@
     </header>
 
     <!-- Seção Hero Responsiva -->
-    <section class="py-12 bg-[#F8F7F4]">
-        <div class="max-w-4xl mx-auto px-6 hero">
+    <section class="bg-[#F8F7F4] rv in">
+        <div class="hero">
             <!-- Conteúdo de texto -->
             <div class="hero-content text-center sm:text-left flex flex-col items-center sm:items-start">
-                <span class="text-sm font-semibold tracking-widest text-[#9A031E] uppercase mb-2">PSICANÁLISE
+                <span class="tag text-sm font-semibold tracking-widest text-[#9A031E] uppercase mb-2">PSICANÁLISE
                     ONLINE</span>
                 <h1 class="text-3xl sm:text-5xl font-serif text-[#2B2D42] mb-6 leading-tight">
                     Terapia para fortalecer o seu emocional e transformar a sua vida.
                 </h1>
-                <p class="text-base sm:text-lg text-gray-700 leading-relaxed font-normal mb-6">
+                <p class="lead text-base sm:text-lg text-gray-700 leading-relaxed font-normal mb-6">
                     Vamos construir, juntos, saídas para aquilo que hoje paralisa a sua vida.
                 </p>
 
@@ -1850,15 +1976,14 @@
                 <!-- Botão de Agendamento -->
                 <a href="https://wa.me/5541920048552?text=Ol%C3%A1%2C%20Dr.%20Humberto!%20Gostaria%20de%20saber%20mais%20sobre%20o%20atendimento."
                     target="_blank" rel="noopener noreferrer"
-                    class="inline-block bg-[#9A031E] hover:bg-[#7a0217] text-white font-medium px-8 py-3.5 rounded-full shadow transition text-base">
+                    class="btn inline-block bg-[#9A031E] hover:bg-[#7a0217] text-white font-medium px-8 py-3.5 rounded-full shadow transition text-base">
                     Agendar Sessão Online
                 </a>
             </div>
 
             <!-- Foto de Perfil Redonda -->
-            <div class="hero-photo">
-                <img src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista"
-                    class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow-md border-4 border-white hero-img">
+            <div class="phw hero-photo">
+                <img src="imagens/dr-humberto.jpg" alt="Dr. Humberto Costa, psicanalista" class="photo">
             </div>
         </div>
     </section>
@@ -1869,8 +1994,15 @@
             <span class="tag">Quem sou</span>
             <h2>Dr. Humberto Costa | Psicanalista</h2>
             <div class="sobre-row">
-                <img class="qph sobre-ph rv in" src="images/dr-humberto-quemsou.jpg" alt="Dr. Humberto Costa, psicanalista">
-                <p class="lead"><strong class="desktop-bold">Acredito na terapia como um espaço de escuta profundamente humana, empática e ética.</strong><br class="desktop-only"> A psicanálise sempre esteve no centro dos meus interesses de investigação, da graduação ao doutorado e pós-doutorado. O tema permeou minhas pesquisas, movido pela vontade de compreender as particularidades do funcionamento da mente humana. Hoje, apoiado na experiência clínica e formação acadêmica, posso acompanhar você na compreensão dos conflitos e repetições que te paralisam, abrindo caminho para escolhas mais livres e conscientes.</p>
+                <img class="qph sobre-ph rv in" src="images/dr-humberto-quemsou.jpg"
+                    alt="Dr. Humberto Costa, psicanalista">
+                <p class="lead"><strong class="desktop-bold">Acredito na terapia como um espaço de escuta profundamente
+                        humana, empática e ética.</strong><br class="desktop-only"> A psicanálise sempre esteve no
+                    centro dos meus interesses de investigação, da graduação ao doutorado e pós-doutorado. O tema
+                    permeou minhas pesquisas, movido pela vontade de compreender as particularidades do funcionamento da
+                    mente humana. Hoje, apoiado na experiência clínica e formação acadêmica, posso acompanhar você na
+                    compreensão dos conflitos e repetições que te paralisam, abrindo caminho para escolhas mais livres e
+                    conscientes.</p>
             </div>
         </section>
 
@@ -1900,7 +2032,7 @@
             <!-- Foto de Perfil Centralizada -->
             <div class="flex justify-center mb-6">
                 <img src="imagens/dr-humberto-citacao.jpg" alt="Dr. Humberto Costa"
-                    class="w-36 h-36 rounded-full object-cover shadow-md border-4 border-[#F8F7F4]">
+                    class="photo w-36 h-36 rounded-full object-cover shadow-md border-4 border-[#F8F7F4]">
             </div>
 
             <!-- Citação -->
